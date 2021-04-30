@@ -7,7 +7,7 @@
   --keyboard-width: calc(((var(--fn-width) * 16) + (var(--key-spacing) * 15)));
 }
 
-@media (max-aspect-ratio: 1006/384) {
+@media (max-aspect-ratio: 1000/400) {
   :root {
     --fn-height: 3.5vw;
     --fn-width: 6vw;
@@ -15,41 +15,13 @@
     --key-spacing: 0.2666vw;
     --key-outline: 0.02666vw;
     --keyboard-width: 100vw;
+    --font-size: 1.8vw;
+    --padding: 0.4vw;
   }
-}
 
-body {
-  margin: 0;
-}
-
-section {
-  display: none;
-}
-
-section.active {
-  display: block;
-}
-
-.grid {
-  display:grid;
-  width: var(--keyboard-width);
-  grid-template-rows: var(--fn-height) repeat(5, var(--key-size));
-  grid-row-gap: var(--key-spacing);
-}
-
-.grid div {
-  border-radius: calc(var(--key-size) / 10);
-  box-sizing: content-box;
-  border: var(--key-outline) #888 solid;
-}
-
-div.row, div#arrow-keys {
-  border: none;
-}
-
-.row {
-  display: grid;
-  grid-column-gap: var(--key-spacing);
+  body {
+    background-color: #eef;
+  }
 }
 
 #function-keys {
@@ -60,7 +32,7 @@ div.row, div#arrow-keys {
   grid-template-columns: repeat(13, var(--key-size)) 1fr;
 }
 
-#upper-row {
+#top-row {
   grid-template-columns: 1fr repeat(13, var(--key-size));
 }
 
@@ -68,7 +40,7 @@ div.row, div#arrow-keys {
   grid-template-columns: 1fr repeat(11, var(--key-size)) 1fr;
 }
 
-#lower-row {
+#bottom-row {
   grid-template-columns: 1fr repeat(10, var(--key-size)) 1fr;
 }
 
@@ -83,21 +55,21 @@ div.row, div#arrow-keys {
   grid-template-columns: repeat(3, 1fr);
 }
 
-#up-arrow {
+.up-arrow {
   grid-column: 2 / 3;
 }
 
-#left-arrow {
+.left-arrow {
   grid-column: 1 / 2;
   grid-row: 2;
 }
 
-#down-arrow {
+.down-arrow {
   grid-column: 2 / 3;
   grid-row: 2;
 }
 
-#right-arrow {
+.right-arrow {
   grid-column: 3;
   grid-row: 2;
 }

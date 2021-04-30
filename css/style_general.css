@@ -1,0 +1,53 @@
+:root {
+  --font-size: 4.5vh;
+  --padding: 1vh;
+}
+
+body {
+  margin: 0;
+  font-size: var(--font-size);
+}
+
+.row > div {
+  text-align: center;
+  padding: var(--padding);
+}
+
+div.left-aligned {
+  text-align: left;
+}
+
+div.right-aligned {
+  text-align: right;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  width: var(--keyboard-width);
+  grid-template-rows: var(--fn-height) repeat(5, var(--key-size));
+  grid-row-gap: var(--key-spacing);
+}
+
+.grid div {
+  border-radius: calc(var(--key-size) / 10);
+  box-sizing: content-box;
+  border: var(--key-outline) #888 solid;
+}
+
+div.row,
+div#arrow-keys {
+  border: none;
+}
+
+.row {
+  display: grid;
+  grid-column-gap: var(--key-spacing);
+}

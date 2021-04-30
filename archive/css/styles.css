@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #383caa;
+}
+
+main {
+  position: relative;
+  background-color: red;
+  width: 841px;
+  height: 410px;
+  display: grid;
+
+grid-template-rows:
+   [function-keys] 50px
+   [number-keys] 70px
+   [upper] 70px
+   [home] 70px
+   [lower] 70px
+   [space-bar] 70px;
+grid-gap: 5% 0;
+}
+
+img {
+  position: absolute;
+  opacity: 0.5;
+}
+
+div {
+}
+
+div.row {
+  width: 100%;
+  background-color: rgba(0,99,0,0.5);
+  height: 90%;
+}
+
+div.row:nth-child(even) {
+  background-color: blue;
+}
+
+.hilite {
+  filter: invert(1);
+}
+
+#F1 {
+
+}

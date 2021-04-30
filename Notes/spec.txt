@@ -1,0 +1,41 @@
+Two contextual menus:
+
+* Physical layout
+* Functional layout (key mapping)
+
+
+We want to send a URL with a format like:
+
+https://example.com/Ctrl+Shift+S
+https://example.com/Ctrl-Shift-S
+
+https://example.com/Shift+Alt+up-arrow
+
+https://example.com/~
+https://example.com/`
+
+We also need to read in the which physical key shows which key mapping, in three cases:
+
+lower-case
+Shift
+AltGr
+
+~ may be Shift-n0 or AltGr-tD
+* may be Shift-8 or Shift-tD
+' may be hC or Shift-hD
+` may be n0 or 
+
+The text on non-character keys may be different (Strg instead of Ctrl: an arrow instead of "up-arrow")
+
+The symbols on each key depends on the default language of the keyboard. A ThinkPad will always have the same physical layout, but a German ThinkPad will have specific letters in specific places, and Strg instead of Ctrl.
+
+The actual display may be overridden by a specific keyboard mapping: my keyboard types in Dvorak, but the keys show QWERTY. If I am to type Ctrl-O, I need to press the keys that say Ctrl + S.
+
+If the physical layout doesn't reflect the key mapping, then we can:
+
+* Show the physical layout in grey
+* Replace the physical symbol with the key mapping for a shortcut in black.
+
+We can do this in every case. If the physical and the functional match, then everything is normal. Depending on whether the Shift and AltGr keys have been pressed, the actual
+
+The Shift and AltGr display depends on the physical keyboard. Dell shows only Shift; ThinkPad shows AltGr in a third row. Dell shows letters centred, ThinkPad shows them top left.

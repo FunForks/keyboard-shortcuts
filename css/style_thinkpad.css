@@ -8,7 +8,7 @@
   --keyboard-width: calc(((var(--fn-width) * 18) + (var(--key-spacing) * 17)));
 }
 
-@media (max-aspect-ratio: 748/287) {
+@media (max-aspect-ratio: 1000/414) {
   :root {
     --fn-height: 3.5vw;
     --fn-width: 5.3vw;
@@ -17,55 +17,24 @@
     --key-outline: 0.02666vw;
     --narrow-key: 6vw;
     --keyboard-width: 100vw;
+    --font-size: 1.8vw;
+    --padding: 0.414vw;
   }
+
   body {
-    /* background-color: #003; */
+    background-color: #eef;
   }
-}
-
-body {
-  margin: 0;
-}
-
-section {
-  display: none;
-}
-
-section.active {
-  display: block;
-}
-
-.grid {
-  display:grid;
-  width: var(--keyboard-width);
-  grid-template-rows: var(--fn-height) repeat(5, var(--key-size));
-  grid-row-gap: var(--key-spacing);
-}
-
-.grid div {
-  border-radius: calc(var(--key-size) / 10);
-  box-sizing: content-box;
-  border: var(--key-outline) #888 solid;
-}
-
-div.row, div#arrow-keys {
-  border: none;
-}
-
-.row {
-  display: grid;
-  grid-column-gap: var(--key-spacing);
 }
 
 #function-keys {
-  grid-template-columns: 1fr repeat(15, var(--fn-width))1fr;
+  grid-template-columns: 1fr repeat(15, var(--fn-width)) 1fr;
 }
 
 #number-keys {
   grid-template-columns: repeat(13, var(--key-size)) 1fr;
 }
 
-#upper-row {
+#top-row {
   grid-template-columns: 1fr repeat(12, var(--key-size)) 1fr;
 }
 
@@ -73,18 +42,16 @@ div.row, div#arrow-keys {
   grid-template-columns: 1fr repeat(13, var(--key-size));
 }
 
-#lower-row {
+#bottom-row {
   grid-template-columns: repeat(12, var(--key-size)) 1fr;
 }
 
 #space-row {
-  grid-template-columns: repeat(4, var(--key-size)) calc(
-    (
-      var(--key-size) * 5
-    ) + (
-      var(--key-spacing) * 4
+  grid-template-columns:
+    repeat(4, var(--key-size)) calc(
+      (var(--key-size) * 5) + (var(--key-spacing) * 4)
     )
-  ) repeat(3, var(--narrow-key)) 1fr;
+    repeat(3, var(--narrow-key)) 1fr;
 }
 
 #arrow-keys {
@@ -111,10 +78,6 @@ div.row, div#arrow-keys {
 #right-arrow {
   grid-column: 3;
   grid-row: 2;
-}
-
-.right-aligned {
-  text-align: right;
 }
 
 .center-aligned {
