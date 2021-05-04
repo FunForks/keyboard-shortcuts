@@ -6,7 +6,7 @@
 "use strict";
 
 class Settings {
-  constructor() {
+  constructor(layoutsPromise) {
     this.initialize();
   }
 
@@ -30,7 +30,8 @@ class Settings {
       functional: this.functional.value,
       custom: this.custom.value
     };
-    console.log("this.settings:", this.settings);
+
+    this.showLayout(this.settings);
   }
 
   keyPress(event) {
@@ -38,31 +39,42 @@ class Settings {
   }
 
   setPhysical(event) {
-    const layout = event.target.value;
+    const physical = (this.settings.physical = event.target.value);
+    const functional = this.settings.functional;
+    this.showLayout({ physical, functional });
+  }
+
+  setFunctional(event) {
+    const functional = (this.settings.functional = event.target.value);
+    const physical = this.settings.physical;
+    this.showLayout({ physical, functional });
+  }
+
+  showLayout({ physical, functional }) {
     this.sections.forEach((section) => {
-      if (section.id === layout) {
+      if (section.id === physical) {
         section.classList.add("active");
-        this.link.href = this.getLinkURL(layout);
+        this.link.href = this.getLinkURL(physical);
       } else {
         section.classList.remove("active");
       }
     });
+
+    this.showKeyMapping(physical, functional);
   }
 
   getLinkURL(layout) {
     return "css/style_" + layout + ".css";
   }
 
-  setFunctional(event) {
-    const functional = event.target.value;
-    const section = document.querySelector("section.active");
-    const physical = section.id;
+  showKeyMapping(physical, functional) {
     const mappings = this.getMappings(physical, functional);
+    const section = document.querySelector("section#" + physical);
     const selector = ".row div";
     const keyDivs = section.querySelectorAll(selector);
     const keys = this.getKeysByClass(keyDivs);
 
-    console.log("keys:", keys);
+    // console.log("keys:", keys);
     // console.log(`mappings`, mappings);
 
     for (let keyCode in mappings) {

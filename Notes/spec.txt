@@ -14,7 +14,7 @@ https://example.com/Shift+Alt+up-arrow
 https://example.com/~
 https://example.com/`
 
-We also need to read in the which physical key shows which key mapping, in three cases:
+We also need to read in which physical key shows which key mapping, in three cases:
 
 lower-case
 Shift
@@ -23,7 +23,7 @@ AltGr
 ~ may be Shift-n0 or AltGr-tD
 * may be Shift-8 or Shift-tD
 ' may be hC or Shift-hD
-` may be n0 or 
+` may be n0 or
 
 The text on non-character keys may be different (Strg instead of Ctrl: an arrow instead of "up-arrow")
 
@@ -39,3 +39,41 @@ If the physical layout doesn't reflect the key mapping, then we can:
 We can do this in every case. If the physical and the functional match, then everything is normal. Depending on whether the Shift and AltGr keys have been pressed, the actual
 
 The Shift and AltGr display depends on the physical keyboard. Dell shows only Shift; ThinkPad shows AltGr in a third row. Dell shows letters centred, ThinkPad shows them top left.
+
+---
+
+The target language of the machine determines both:
+* Where the keys are placed physically, and
+* Which character(s) appear on which physical key
+
+If the user adds a custom keyboard on top of that, then the a new JSON file needs to be applied
+
+This means that a separate JSON file is required for each vendor-language combination. We are dealing with:
+
+* German-Thinkpad
+* Canadian-Dell-xps
+  - with Dvorak layout
+* Jerreh's MacBook
+
+So we need 3 entries in the keyboard selector:
+* Thinkpad - German keyboard
+* Dell XPS - English keyboard
+* MacBook  - Jerreh's keyboard
+
+We can show a Custom Layout selector if the JSON file contains more than one layout.
+
+In the final version, the JSON layouts will be stored in MongoDB on the server. All we will know is the names of the available layouts:
+
+* ThinkPad_German
+* Dell-XPS_English
+
+The page will be in React format, using components. The page will load and make a request to get a JSON file with the format:
+
+[
+  { name: "ThinkPad (German)"
+  , layouts: ["de"]
+  }
+, { name: "DellXPS (English)"
+  , layouts: ["en-CA", "de"]
+  }
+]
